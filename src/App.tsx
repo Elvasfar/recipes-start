@@ -22,6 +22,7 @@ export default function App() {
         </Route>
         <Route path="/add" element={<RecipeForm />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
         {/* <Route path="/logout" element={<Logout />} /> */}
       </Routes>
     </Layout>
