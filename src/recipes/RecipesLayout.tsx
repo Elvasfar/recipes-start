@@ -8,8 +8,8 @@ export default function RecipesLayout() {
 
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ flex: 1, flexDirection: "column" }}>
-        <RecipeList />
+      <div style={{ flex: 0, flexDirection: "column" }}>
+        {/* <RecipeList /> */}
       </div>
       <div className="outlet-container">
         {outlet || <h3>Select a recipe to see details</h3>}
