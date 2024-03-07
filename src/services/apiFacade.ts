@@ -22,6 +22,11 @@ interface Info {
   info: string;
 }
 
+interface Category {
+  id: number | null;
+  name: string;
+}
+
 let categories: Array<string> = [];
 // let recipes: Array<Recipe> = [];
 
@@ -47,6 +52,14 @@ async function addRecipe(newRecipe: Recipe): Promise<Recipe> {
   const URL = newRecipe.id ? `${RECIPE_URL}/${newRecipe.id}` : RECIPE_URL;
   return fetch(URL, options).then(handleHttpErrors);
 }
+
+async function addCategory(newCategory: Category): Promise<Category> {
+  const method = newCategory.id ? "PUT" : "POST";
+  const options = makeOptions(method, newCategory);
+  const URL = newCategory.id ? `${CATEGORIES_URL}/${newCategory.id}` : CATEGORIES_URL;
+  return fetch(URL, options).then(handleHttpErrors);
+}
+
 async function deleteRecipe(id: number): Promise<Recipe> {
   const options = makeOptions("DELETE", null);
   return fetch(`${RECIPE_URL}/${id}`, options).then(handleHttpErrors);
@@ -58,4 +71,4 @@ async function getInfo(): Promise<Info> {
 
 export type { Recipe, Info };
 // eslint-disable-next-line react-refresh/only-export-components
-export { getCategories, getRecipes, getRecipe, addRecipe, deleteRecipe, getInfo };
+export { getCategories, getRecipes, getRecipe, addRecipe, deleteRecipe, getInfo, addCategory };
